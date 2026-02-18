@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}My Registrations | Eventify{%
+endblock %} {% block content %}
+
+<div class="flex items-center justify-between mb-6">
+  <div>
+    <h1 class="text-3xl font-bold text-gray-900">My Registrations</h1>
+    <p class="text-gray-600 mt-1">
+      Logged in as {{ session.get("user_name") }}
+    </p>
+  </div>
+</div>
+
+<div class="bg-white border shadow-sm rounded-2xl overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50 border-b">
+        <tr class="text-left">
+          <th class="p-4">Event</th>
+          <th class="p-4">Date</th>
+          <th class="p-4">Time</th>
+          <th class="p-4">Venue</th>
+          <th class="p-4">Registered At</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for r in registrations %}
+        <tr class="border-b hover:bg-gray-50">
+          <td class="p-4 font-semibold">{{ r.title }}</td>
+          <td class="p-4">{{ r.event_date }}</td>
+          <td class="p-4">{{ r.event_time }}</td>
+          <td class="p-4">{{ r.venue }}</td>
+          <td class="p-4">{{ r.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% if registrations|length == 0 %}
+<div class="mt-6 p-4 rounded-xl bg-gray-50 border text-gray-600 text-center">
+  You have not registered for any event yet.
+</div>
+{% endif %} {% endblock %}

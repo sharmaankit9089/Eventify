@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% block title %}Add Event | Admin{% endblock %} {%
+block content %}
+
+<div class="max-w-2xl mx-auto bg-white border shadow-sm rounded-2xl p-6">
+  <h1 class="text-2xl font-bold text-gray-900">Add New Event</h1>
+  <p class="text-gray-600 mt-1">Create an event with a capacity limit.</p>
+
+  {% if error %}
+  <div
+    class="mt-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium"
+  >
+    {{ error }}
+  </div>
+  {% endif %}
+
+  <form method="POST" class="mt-6 space-y-4">
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1"
+        >Title</label
+      >
+      <input
+        required
+        name="title"
+        type="text"
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        placeholder="Event title"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1"
+        >Description</label
+      >
+      <textarea
+        required
+        name="description"
+        rows="4"
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        placeholder="Event details..."
+      ></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1"
+          >Date</label
+        >
+        <input
+          required
+          name="event_date"
+          type="date"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1"
+          >Time</label
+        >
+        <input
+          required
+          name="event_time"
+          type="time"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1"
+        >Venue</label
+      >
+      <input
+        required
+        name="venue"
+        type="text"
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        placeholder="Auditorium / Lab / Hall"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-1"
+        >Capacity</label
+      >
+      <input
+        required
+        name="capacity"
+        type="number"
+        min="1"
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        placeholder="50"
+      />
+    </div>
+
+    <div class="flex gap-2">
+      <button
+        type="submit"
+        class="px-5 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
+      >
+        Create Event
+      </button>
+
+      <a
+        href="/admin/dashboard"
+        class="px-5 py-2 rounded-lg bg-gray-100 text-gray-800 font-semibold hover:bg-gray-200 transition"
+      >
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
